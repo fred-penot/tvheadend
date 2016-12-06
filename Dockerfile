@@ -42,13 +42,20 @@ RUN sh /root/import_logo.sh
 # Ajout du virtual host de l appli logos TV
 COPY logotv.conf /etc/apache2/sites-enabled/logotv.conf
 
+# Ajout de la config des chaines Free
+COPY channel.zip /home/hts/.hts/tvheadend/channel.zip
+RUN unzip channel.zip
+RUN rm -f channel.zip
+RUN chown -R hts:video /home/hts/.hts/tvheadend/channel
+RUN chown -R hts:video /home/hts/.hts/tvheadend/epggrab
+
 # Ajout du script services.sh au demarrage
 COPY services.sh /root/services.sh
 RUN chmod -f 755 /root/services.sh
 RUN echo "sh /root/services.sh" >> /root/.bashrc
 
 # Ports
-EXPOSE 22 9123 9981 9983 554
+EXPOSE 22 80 9123 9981 9983 554
 
 # Point de montage
 VOLUME ["/home","/etc/apache2","/var/log"]
