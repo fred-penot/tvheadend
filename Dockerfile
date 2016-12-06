@@ -51,4 +51,4 @@ RUN echo "sh /root/services.sh" >> /root/.bashrc
 EXPOSE 22 9123 9981 9983 554
 
 # Point de montage
-VOLUME ["/home","/etc/apache2"]
+VOLUME ["/home","/etc/apache2","/var/log"]
