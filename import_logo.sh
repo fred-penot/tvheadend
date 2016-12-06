@@ -1,6 +1,6 @@
 login_ssh=docker
 
-mkdir -p /home/apps
+mkdir /home/apps
 cd /home/apps
 git clone https://github.com/fred-penot/logotv.git
 chmod -Rf 777 /home/apps/logotv
