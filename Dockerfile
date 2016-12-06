@@ -39,13 +39,16 @@ COPY import_logo.sh /root/import_logo.sh
 RUN chmod -f 755 /root/import_logo.sh
 RUN sh /root/import_logo.sh
 
+# Ajout du virtual host de l appli logos TV
+COPY logotv.conf /etc/apache2/sites-enabled/logotv.conf
+
 # Ajout du script services.sh au demarrage
 COPY services.sh /root/services.sh
 RUN chmod -f 755 /root/services.sh
 RUN echo "sh /root/services.sh" >> /root/.bashrc
 
 # Ports
-EXPOSE 22 80 9981 9983 554
+EXPOSE 22 80 9123 9981 9983 554
 
 # Point de montage
-VOLUME ["/home/${login_ssh}"]
+VOLUME ["/home"]
