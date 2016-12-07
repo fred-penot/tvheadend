@@ -44,10 +44,8 @@ COPY logotv.conf /etc/apache2/sites-enabled/logotv.conf
 
 # Ajout de la config des chaines Free
 COPY channel.zip /home/hts/.hts/tvheadend/channel.zip
-RUN unzip channel.zip
-RUN rm -f channel.zip
-RUN chown -R hts:video /home/hts/.hts/tvheadend/channel
-RUN chown -R hts:video /home/hts/.hts/tvheadend/epggrab
+COPY install_channel.sh /root/install_channel.sh
+RUN sh /root/install_channel.sh
 
 # Ajout du script services.sh au demarrage
 COPY services.sh /root/services.sh
