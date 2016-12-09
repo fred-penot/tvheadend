@@ -40,7 +40,7 @@ RUN chmod -f 755 /root/import_logo.sh
 RUN sh /root/import_logo.sh
 
 # Ajout du virtual host de l appli logos TV
-COPY logotv.conf /etc/apache2/sites-enabled/logotv.conf
+COPY logotv2.conf /etc/apache2/sites-enabled/logotv2.conf
 
 # Ajout du script services.sh au demarrage
 COPY services.sh /root/services.sh
